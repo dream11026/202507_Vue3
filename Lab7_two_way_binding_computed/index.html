@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <!-- script 放在head-->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- app.js  放在head 需要 async defer，否則會載入失敗-->
+    <script src="app.js" async defer></script>
+</head>
+
+<body>
+    <h1>two way binding</h1>
+    <section id="app">
+        <!-- 單向綁定 -->
+        <!-- v-on: 改為 -> @ -->
+        <!-- <input type="text" v-on:input="setIssue"> -->
+        <!-- <input type="text" @input="setIssue"> -->
+
+        <!-- two way binding -->
+        <!-- v-bind: 改為 -> : -->
+        <!-- <input type="text" @input="setIssue" v-bind:value="issue"> -->
+        <!-- <input type="text" @input="setIssue" :value="issue"> -->
+
+        <!-- 簡化, 就不需要callback function -->
+        <input type="text" v-model="issue" />
+        <p>your issue is:{{issue}}</p>
+
+        <p>counter={{counter}}</p>
+
+        <!-- computed -->
+        <!-- <p>{{formatIssue()}}</p> -->
+
+        <!-- 移至 computed 區塊，避免render cycle -->
+        <p>{{formatIssue}}</p> 
+
+        <button @click="resetIssue">clear issue</button>
+        <button @click="increase">+1</button>
+
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 套用 styles-->
+    <link rel="stylesheet" href="styles.css">
+    <!-- script 放在head-->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- app.js  放在head 需要 async defer，否則會載入失敗-->
+    <script src="app.js" async defer></script>
+</head>
+
+<body>
+    <h1>if, else, Loop</h1>
+    <section id="app">
+        <input type="text" v-model="courseContent" />
+        <button @click="addCourse">add a course</button>
+
+        <div class="is1Selected">
+            <h1>v-if, v-else 元素會被刪除</h1>
+            <h3 v-if="courses.length === 0">No course</h3>
+            <ul v-else>
+                <li>{{courses}}</li>
+            </ul>
+        </div>
+
+        <div class="is2Selected">
+            <h1>v-show 元素顯示 or 隱藏</h1>
+            <h3 v-show="courses.length === 0">No course</h3>
+            <ul v-show="courses.length > 0">
+                <li>{{courses}}</li>
+            </ul>
+        </div>
+        </div>
+
+        <div class="is3Selected">
+            <h1>v-for in array，點擊單項可刪除，透過@click.stop 避免input也觸發點擊的事件</h1>
+            <h3 v-if="courses.length === 0">No course</h3>
+            <ul v-else>
+                <li v-for="(c,index) in courses" @click="removeCourse(index)" :key="c">
+                    index {{index}} / content {{c}}
+                    &nbsp;<input type="text" @click.stop>
+                </li>
+        </div>
+        </ul>
+        <hr />
+        <h1>iterate a object with value:</h1>
+        <ul>
+            <li v-for="v in {name:'poop',duration:35,instructor:'Mark'}">{{v}}</li>
+        </ul>
+        <hr />
+        <h1>iterate a object with key and value:</h1>
+        <ul>
+            <li v-for="(v,k) in {name:'poop',duration:35,instructor:'Mark'}">key = {{k}}, value = {{v}}</li>
+        </ul>
+    </section>
+    <script src="" async defer></script>
+</body>
+
+</html>

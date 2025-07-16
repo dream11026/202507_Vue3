@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 套用 styles-->
+    <link rel="stylesheet" href="styles.css">
+    <!-- script 放在head-->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- app.js  放在head 需要 async defer，否則會載入失敗-->
+    <script src="app.js" async defer></script>
+</head>
+
+<body>
+    <h1>css</h1>
+    <section id="app">
+        <!-- class套css, 增加click事件 -->
+        <h2>一般用法，class套css，增加click事件</h2>
+        <div class="demo" style="border-color:green ;" @click="divSelected(1)">Mountain</div>
+        <div class="demo" style="border-color:blue ;" @click="divSelected(2)">Ocean</div>
+        <div class="demo" style="border-color:red ;" @click="divSelected(3)">Sun</div>
+
+        <h2>使用Vue的:style</h2>
+        <div class="demo" :style="{borderColor:div1Selected?'green':'#CCC'}" @click="divSelected(1)">Mountain</div>
+        <div class="demo" :style="{borderColor:div2Selected?'blue':'#CCC'}" @click="divSelected(2)">Ocean</div>
+        <div class="demo" :style="{borderColor:div3Selected?'red':'#CCC'}" @click="divSelected(3)">Sun</div>
+
+        <h2>使用Vue的:class，套用多種css</h2>
+        <div :class="div1Selected? 'demo is1Selected' : 'demo' " @click="divSelected(1)">Mountain</div>
+        <div :class="div2Selected? 'demo is2Selected' : 'demo' " @click="divSelected(2)">Ocean</div>
+        <div :class="div3Selected? 'demo is3Selected' : 'demo' " @click="divSelected(3)">Sun</div>
+
+        <h2>使用Vue的:class，dynamic的:class="{}"，固定demo樣式</h2>
+        <div :class="{demo:true, is1Selected:div1Selected}" @click="divSelected(1)">Mountain</div>
+        <div :class="{demo:true, is2Selected:div2Selected}" @click="divSelected(2)">Ocean</div>
+        <div :class="{demo:true, is3Selected:div3Selected}" @click="divSelected(3)">Sun</div>
+
+        <h2>使用Vue的:class，dynamic的:class="{}"，固定class = demo樣式</h2>
+        <div class="demo" :class="{is1Selected:div1Selected}" @click="divSelected(1)">Mountain</div>
+        <div class="demo" :class="{is2Selected:div2Selected}" @click="divSelected(2)">Ocean</div>
+        <div class="demo" :class="{is3Selected:div3Selected}" @click="divSelected(3)">Sun</div>
+
+        <h2>使用Vue的:class，使用computed class，固定class = demo樣式</h2>
+        <div class="demo" :class="div1Classes" @click="divSelected(1)">Mountain</div>
+        <div class="demo" :class="div2Classes" @click="divSelected(2)">Ocean</div>
+        <div class="demo" :class="div3Classes" @click="divSelected(3)">Sun</div>
+
+        <h2>使用Vue的:class = []，使用computed class</h2>
+        <div :class="['demo', div1Classes]" @click="divSelected(1)">Mountain</div>
+        <div :class="['demo', div2Classes]" @click="divSelected(2)">Ocean</div>
+        <div :class="['demo', div3Classes]" @click="divSelected(3)">Sun</div>
+
+        <h2>使用Vue的:class = []，使用 inline</h2>
+        <div :class="['demo', {is1Selected:div1Selected}]" @click="divSelected(1)">Mountain</div>
+        <div :class="['demo', {is2Selected:div2Selected}]" @click="divSelected(2)">Ocean</div>
+        <div :class="['demo', {is3Selected:div3Selected}]" @click="divSelected(3)">Sun</div>
+
+    </section>
+    <script src="" async defer></script>
+</body>
+
+</html>

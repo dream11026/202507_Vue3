@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <!-- script 放在head-->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- app.js  放在head 需要 async defer，否則會載入失敗-->
+    <script src="app.js" async defer></script>
+</head>
+
+<body>
+    <h1>event binding</h1>
+    <section id="app">
+        <button v-on:click="counter1++">+1</button>
+        <button v-on:click="counter1--">-1</button>
+        <p><b><em>inline</em> script</b> Counter1:{{counter1}}</p>
+    </section>
+
+    <section id="app2">
+        <p>只能滑鼠中鍵點</p>
+        <!-- Button Modifiers​
+        .left
+        .right
+        .middle -->
+        <button v-on:click.middle="increase1">+1</button>
+        <button v-on:click.middle="decrease1()">-1</button>
+        <p><b><em>import</em> script</b> Counter1:{{counter1}}</p>
+    </section>
+
+    <section id="app3">
+        <button v-on:click="increase1(3)">+3</button>
+        <button v-on:click="decrease1(3)">-3</button>
+        <p><b><em>import</em> script with param</b> Counter1:{{counter1}}</p>
+        <p>constant:{{1+2}}</p>
+        <hr />
+        <!-- <input type="text" v-on:input="setToDo"/> -->
+        <input type="text" v-on:input="setToDo($event,'我想要')" />
+        <p>What you expected to do:{{todo}}</p>
+        <hr />
+        <!-- 使用vue的e.preventDefault()阻止預設行為 -->
+        <p>表單1</p>
+        <form v-on:submit="submitForm">
+            <input type="text">
+            <button type="text">Sign Up</button>
+        </form>
+        <hr />
+
+        <!-- 使用vue的.prevent阻止預設行為 -->
+        <!-- .stop
+        .prevent
+        .self
+        .capture
+        .once
+        .passive -->
+        <p>表單2</p>
+        <form v-on:submit.prevent="submitForm2">
+            <input type="text">
+            <button type="text">Sign Up2</button>
+        </form>
+
+        <hr />
+        <p>其它事件</p>
+        <input type="text" v-on:input="setUrgent" v-on:keyup.enter="commitUrgent">
+        <p>Current urgent issue:{{urgent}}</p>
+        <p>Committed urgent issue:{{checkedUrgent}}</p>
+
+        <hr />
+        <!-- v-once -->
+        <p>目前的值:{{counter2}}</p>
+        <p v-once>初始值:{{counter2}}</p>
+        <button v-on:click="increase2(4)">+4</button>
+        <button v-on:click="decrease2(4)">-4</button>
+
+    </section>
+
+</body>
+
+</html>

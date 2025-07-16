@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <!-- script 放在head-->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- app.js  放在head 需要 async defer，否則會載入失敗-->
+    <script src="app.js" async defer></script>
+</head>
+
+<body>
+    <h1>data binding</h1>
+    <section id="my-planner">
+        <h2>My yearly plan</h2>
+        <p>{{primaryGoal}}</p>
+        <!-- 資料綁定 v-bind，放在tag內-->
+        <p>這樣work <a v-bind:href="planLink">Link</a></p>
+        <p>這樣不會work <a href="{{planLink}}">Link</a></p>
+
+        <!-- 資料綁定 interpolation {{}}，放在tag外-->
+        <p>直接呼叫函數(html safe):{{outputMessage()}}</p>
+        <p>這樣會顯示html,但比較危險, 要注意source </p>
+        <!-- 資料綁定 v-html與interpolation 功能一樣，但放在tag內，但會被injection XSS攻擊-->
+        <p v-html="outputMessage()"></p>
+        <p v-html="getRandom(100)"></p>
+        <p>作一些計算{{2 + 3 * 5 - 4 ** 3}}</p>
+        <P>呼叫內建函數{{Math.random()}}</P>
+    </section>
+
+</body>
+
+</html>

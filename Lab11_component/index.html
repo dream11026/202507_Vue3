@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 套用 styles-->
+    <link rel="stylesheet" href="styles.css">
+    <!-- script 放在head-->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- app.js  放在head 需要 async defer，否則會載入失敗-->
+    <script src="app.js" async defer></script>
+</head>
+
+<body>
+    <h1>Lab11 Component</h1>
+    <section id="app">
+        <h1 class="is1Selected">原始範本</h1>
+        <ul class="demo">
+            <li v-for="course in courses" :key="course.id">
+                <h2>{{course.id}}</h2>
+                <button @click="toggleCourseDetail">show detail</button>
+                <ul v-if="detailsVisible">
+                    <li>{{course.name}}</li>
+                    <li>{{course.duration}}</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h1 class="is2Selected">Template from component</h1>
+        <ul class="demo">
+            <course-content></course-content>
+            <course-content></course-content>
+            <course-content></course-content>
+        </ul>
+    </section>
+</body>
+
+</html>
