@@ -1,0 +1,3 @@
+[submodule "lab12_webpack"]
+	path = lab12_webpack
+	url = https://github.com/dream11026/202507_Vue3_Webpack.git
