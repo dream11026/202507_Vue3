@@ -2,12 +2,16 @@
     <div>
         <h1>用Firebase儲存資料</h1>
         <button @click="sendByFetch">儲存課程(use fetch)</button>
+        <button @click="sendByAxios">儲存課程(use axios)</button>
     </div>
 </template>
 
 <script>
 // 換成自己的URL
-const URL1 = "https://vue3-cli-eaebc-default-rtdb.firebaseio.com/courses.json"
+const URL1 = "https://vue3-cli-eaebc-default-rtdb.firebaseio.com/202507/vue3/courses.json"
+
+import axios from 'axios'
+
 export default {
     data() {
         return {
@@ -31,6 +35,12 @@ export default {
             }).then(data =>
                 console.log("get result=", data)
             )
+        },
+        sendByAxios() {
+            axios.post(URL1, this.course)
+                .then(result => {
+                    console.log("axios response=", result)
+                })
         }
     }
 }
