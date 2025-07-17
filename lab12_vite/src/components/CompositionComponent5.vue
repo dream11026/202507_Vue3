@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { reactive } from 'vue';
+import { reactive, isRef, toRefs } from 'vue';
 
 export default {
     setup() {
@@ -17,6 +17,12 @@ export default {
             userName: "dream",
             age: 49
         })
+
+        console.log("reactive user=", user)
+        const userReactiveToRefs = toRefs(user)
+        console.log(" after torefs, ", userReactiveToRefs)
+        console.log("user底下的userName包裝後是ref嗎?", isRef(userReactiveToRefs.userName))
+        console.log("user底下的age包裝後是ref嗎?", isRef(userReactiveToRefs.age))
 
         setTimeout(() => {
             user.userName = "一段時間更新 reactive"
