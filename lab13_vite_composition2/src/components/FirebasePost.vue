@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <h1 v-if="isLoading === true">Loading...</h1>
+    <div v-else>
         <h1>用Firebase儲存資料</h1>
         <button @click="sendByFetch">儲存課程(use fetch)</button>
         <button @click="sendByAxios">儲存課程(use axios)</button>
@@ -26,7 +27,8 @@ export default {
     data() {
         return {
             course: { id: "POOP", name: "Python OOP物件導向實戰", duration: 35 },
-            courses: []
+            courses: [],
+            isLoading: false
         }
     },
     methods: {
@@ -54,6 +56,7 @@ export default {
         },
         getByFetch() {
             this.courses = []
+            this.isLoading = true
             fetch(URL1, {
                 method: "GET",
                 headers: {
@@ -70,11 +73,13 @@ export default {
                     console.log(id)
                     this.courses.push(data[id])
                 }
+                this.isLoading = false
             })
 
         },
         getByAxios() {
             this.courses = []
+            this.isLoading = true
             axios.get(URL1).then(result => {
                 console.log("axios get result=", result)
                 if (result.data) {
@@ -83,6 +88,7 @@ export default {
                         this.courses.push(result.data[id])
                     }
                 }
+                this.isLoading = false
             })
         }
     }
