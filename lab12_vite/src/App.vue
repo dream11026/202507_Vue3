@@ -18,6 +18,8 @@
     <composition-component4></composition-component4>
     <hr />
     <composition-component5></composition-component5>
+    <hr />
+    <composition-component6></composition-component6>
   </div>
 </template>
 
@@ -27,6 +29,7 @@ import CompositionComponent2 from './components/CompositionComponent2.vue'
 import CompositionComponent3 from './components/CompositionComponent3.vue'
 import CompositionComponent4 from './components/CompositionComponent4.vue'
 import CompositionComponent5 from './components/CompositionComponent5.vue'
+import CompositionComponent6 from './components/CompositionComponent6.vue'
 
 export default {
   components: {
@@ -35,7 +38,8 @@ export default {
     CompositionComponent2, // 內建支援兩種 命名方式
     CompositionComponent3,
     CompositionComponent4,
-    CompositionComponent5
+    CompositionComponent5,
+    CompositionComponent6
   },
   data() {
     return {
