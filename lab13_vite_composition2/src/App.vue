@@ -13,6 +13,8 @@ const toggleComposition2 = () => {
   displayComposition2.value = !displayComposition2.value
 }
 
+import FirebasePost from './components/FirebasePost.vue'
+
 </script>
 
 <template>
@@ -32,6 +34,8 @@ const toggleComposition2 = () => {
   <div v-if="displayComposition2">
     <MyComposition2></MyComposition2>
   </div>
+  <br />
+  <FirebasePost></FirebasePost>
 </template>
 
 <style scoped></style>
