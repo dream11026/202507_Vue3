@@ -1,47 +1,52 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <div>
+    <h1>composition component practices</h1>
+    <h3>{{ userName }}</h3>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+    <!-- 指定只有一種命名 -->
+    <composition-component1></composition-component1>
+    <hr />
 
-  <main>
-    <TheWelcome />
-  </main>
+    <!-- camel case -->
+    <CompositionComponent2></CompositionComponent2>
+    <!-- kebab  case -->
+    <!-- <composition-component2></composition-component2> -->
+
+    <hr />
+    <composition-component3></composition-component3>
+    <hr />
+    <composition-component4></composition-component4>
+    <hr />
+    <composition-component5></composition-component5>
+    <hr />
+    <composition-component6></composition-component6>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<script>
+import CompositionComponent1 from './components/CompositionComponent1.vue'
+import CompositionComponent2 from './components/CompositionComponent2.vue'
+import CompositionComponent3 from './components/CompositionComponent3.vue'
+import CompositionComponent4 from './components/CompositionComponent4.vue'
+import CompositionComponent5 from './components/CompositionComponent5.vue'
+import CompositionComponent6 from './components/CompositionComponent6.vue'
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+export default {
+  components: {
+    //CompositionComponent1,
+    "composition-component1": CompositionComponent1, // 指定只有一種命名
+    CompositionComponent2, // 內建支援兩種 命名方式
+    CompositionComponent3,
+    CompositionComponent4,
+    CompositionComponent5,
+    CompositionComponent6
+  },
+  data() {
+    return {
+      userName: "dream"
+    }
   }
 }
-</style>
+</script>
+
+<style lang="scss" scoped></style>
