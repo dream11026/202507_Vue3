@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>ref參照到物件</h1>
+        <h1>3. ref參照到物件</h1>
         <p>{{ user }}</p>
         <p>userName:{{ user.userName }},age:{{ user.age }}</p>
         <h1>如果不是reactive的就不會變</h1>
@@ -24,7 +24,7 @@ export default {
         return {
             user: user,
 
-            // 以下直接取值，非reactive元件
+            // 以下.value直接取值，非reactive元件
             pUserName: user.value.userName,
             pAge: user.value.age
         }

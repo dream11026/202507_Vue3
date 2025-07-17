@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Composition Component2 in script setup</h1>
+        <h1>2. Composition Component2 in script setup</h1>
         <h1>Dom會一起刷新</h1>
         <h3>userName:{{ userName }}</h3>
 

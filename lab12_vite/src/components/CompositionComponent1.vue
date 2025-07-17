@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Composition Component1</h1>
+        <h1>1. Composition Component1</h1>
         <h3>userName:{{ userName }}</h3>
         <p>age:{{ age }}</p>
         <h3>userName2:{{ userName2 }}</h3>
