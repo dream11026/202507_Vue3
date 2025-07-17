@@ -14,8 +14,10 @@
 
     <hr />
     <composition-component3></composition-component3>
-    <hr/>
+    <hr />
     <composition-component4></composition-component4>
+    <hr />
+    <composition-component5></composition-component5>
   </div>
 </template>
 
@@ -24,6 +26,7 @@ import CompositionComponent1 from './components/CompositionComponent1.vue'
 import CompositionComponent2 from './components/CompositionComponent2.vue'
 import CompositionComponent3 from './components/CompositionComponent3.vue'
 import CompositionComponent4 from './components/CompositionComponent4.vue'
+import CompositionComponent5 from './components/CompositionComponent5.vue'
 
 export default {
   components: {
@@ -31,7 +34,8 @@ export default {
     "composition-component1": CompositionComponent1, // 指定只有一種命名
     CompositionComponent2, // 內建支援兩種 命名方式
     CompositionComponent3,
-    CompositionComponent4
+    CompositionComponent4,
+    CompositionComponent5
   },
   data() {
     return {
