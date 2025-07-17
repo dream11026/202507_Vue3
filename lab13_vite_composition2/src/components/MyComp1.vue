@@ -10,6 +10,9 @@
         <input placeholder="courseFullName" @input="setCourseFullName" /> -->
         <input placeholder="courseId" v-model="courseId" />
         <input placeholder="courseFullName" v-model="courseFullName" />
+        <hr />
+        <input type="text" placeholder="alternative course full name" ref="courseFullNameInput">
+        <button @click="setCourseFullNameInput">set course full name</button>
     </div>
 </template>
 
@@ -44,12 +47,23 @@ export default {
             console.log(`price goes from ${oldValue} to ${newValue}`)
         })
 
+        // ref: 從 input 參照輸入內容，再將輸入值取出
+        const courseFullNameInput = ref()
+
+        function setCourseFullNameInput() {
+            // 從input元件取值，兩次value
+            // 第一次value 是 input
+            // 第二次value 是 input 的輸入值
+            courseFullName.value = courseFullNameInput.value.value
+        }
+
         return {
             course, extraDuration, price,
             courseDisplayName,
             // setCourseId,
             // setCourseFullName,
-            courseId, courseFullName
+            courseId, courseFullName,
+            courseFullNameInput, setCourseFullNameInput
         }
     }
 }
