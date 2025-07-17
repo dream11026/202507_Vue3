@@ -13,26 +13,19 @@ import { reactive, toRefs } from 'vue';
 
 export default {
     setup() {
+        // define reactive variable
         const user = reactive({
             userName: "dream",
             age: 49
         })
 
-        console.log("reactive user=", user)
-        const { userName, age } = toRefs(user)
-
+        // operate the reactive object
         setTimeout(() => {
             user.userName = "一段時間更新 reactive"
             user.age += 1
         }, 2000)
 
-        return {
-            user: user,
-
-            // 以下直接取值，reactive元件
-            userName: userName,
-            age: age
-        }
+        return { user, ...toRefs(user) }
     }
 }
 </script>
