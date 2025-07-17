@@ -7,6 +7,8 @@
         <!-- 改props處理方式 -->
         <!-- <CourseIntro :courseId="courseId" :courseFullName="courseFullName" :price="price"></CourseIntro> -->
 
+        <!-- 改用provide傳參數 -->
+        <CourseIntro :courseId="courseId" :courseFullName="courseFullName"></CourseIntro>
         <hr />
 
         <!-- <h3>{{ course }} 價格是 {{ price }}</h3> -->
@@ -25,7 +27,7 @@
 </template>
 
 <script>
-import { reactive, ref, computed, watch } from 'vue'
+import { reactive, ref, computed, watch, provide } from 'vue'
 import CourseIntro from './CourseIntro.vue'
 
 export default {
@@ -33,6 +35,8 @@ export default {
     setup() {
         const course = reactive({ name: "POOP", duration: 35 })
         const price = ref(24000)
+        provide("price", price) // 傳遞出去
+
         function extraDuration() {
             course.duration = course.duration + 7
             price.value += 5000

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, inject } from 'vue'
 
 export default {
     // props: ["course", "price"],
@@ -25,7 +25,8 @@ export default {
             }
         })
 
-        return { course }
+        const price = inject("price") // 接收 provide
+        return { course, price }
     }
 }
 </script>
