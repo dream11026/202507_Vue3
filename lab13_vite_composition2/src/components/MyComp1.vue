@@ -2,7 +2,11 @@
     <div>
         <h1>元件1</h1>
         <!-- 元件化 course, price -->
-        <CourseIntro :course="course" :price="price"></CourseIntro>
+        <!-- <CourseIntro :course="course" :price="price"></CourseIntro> -->
+        
+        <!-- 改props處理方式 -->
+        <!-- <CourseIntro :courseId="courseId" :courseFullName="courseFullName" :price="price"></CourseIntro> -->
+
         <hr />
 
         <!-- <h3>{{ course }} 價格是 {{ price }}</h3> -->

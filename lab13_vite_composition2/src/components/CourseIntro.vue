@@ -6,12 +6,26 @@
 </template>
 
 <script>
+import { computed } from 'vue'
+
 export default {
-    props: ["course", "price"],
-    setup() {
+    // props: ["course", "price"],
+    // setup() {
+    //     return {}
+    // }
 
+    // 額外處理 props 內容版本
+    props: ["courseId", "courseFullName", "price"],
+    setup(props) {
+        const course = computed(function () {
+            if (props.courseFullName) {
+                return `[${props.courseId}]-->${props.courseFullName}`
+            } else {
+                return `${props.courseId}`
+            }
+        })
 
-        return {}
+        return { course }
     }
 }
 </script>
