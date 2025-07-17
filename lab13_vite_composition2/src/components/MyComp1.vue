@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { reactive, ref } from 'vue'
+import { reactive, ref, computed } from 'vue'
 export default {
     setup() {
         const course = reactive({ name: "POOP", duration: 35 })
@@ -33,10 +33,17 @@ export default {
             courseFullName.value = e.target.value
         }
 
-        const courseDisplayName = function () {
+        // HOF(High Order Function) 使用 computed 轉換函數
+        const courseDisplayName = computed(function () {
             return courseId.value + '../..' + courseFullName.value
+        })
+        
+        return {
+            course, extraDuration, price,
+            courseDisplayName,
+            setCourseId,
+            setCourseFullName
         }
-        return { course, extraDuration, price, courseDisplayName, setCourseId, setCourseFullName }
     }
 }
 </script>
