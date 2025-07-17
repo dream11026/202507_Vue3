@@ -5,17 +5,20 @@
         <button @click="sendByFetch">儲存課程(use fetch)</button>
         <button @click="sendByAxios">儲存課程(use axios)</button>
         <button @click="getByFetch">取得課程列表(use fetch)</button>
+        <button @click="getByAxios">取得課程列表(use axios)</button>
         <ul>
             <li v-for="course in courses" :key="course.id">
                 <p>{{ course.id }},{{ course.name }},{{ course.duration }}</p>
             </li>
         </ul>
     </div>
+    <h1 v-if="!isLoading && error">{{ error }}</h1>
 </template>
 
 <script>
 // 換成自己的URL
 const URL1 = "https://vue3-cli-eaebc-default-rtdb.firebaseio.com/202507/vue3/courses.json"
+const errURL = "a"
 
 import axios from 'axios'
 
@@ -28,7 +31,8 @@ export default {
         return {
             course: { id: "POOP", name: "Python OOP物件導向實戰", duration: 35 },
             courses: [],
-            isLoading: false
+            isLoading: false,
+            error: null
         }
     },
     methods: {
@@ -57,7 +61,7 @@ export default {
         getByFetch() {
             this.courses = []
             this.isLoading = true
-            fetch(URL1, {
+            fetch(errURL, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json"
@@ -74,8 +78,11 @@ export default {
                     this.courses.push(data[id])
                 }
                 this.isLoading = false
+            }).catch(e => {
+                this.isLoading = false
+                console.log("error=", e)
+                this.error = "failed to fetch data, please try again or check env..."
             })
-
         },
         getByAxios() {
             this.courses = []
@@ -89,6 +96,7 @@ export default {
                     }
                 }
                 this.isLoading = false
+                this.error = null
             })
         }
     }
