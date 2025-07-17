@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { reactive } from 'vue';
+import { reactive, isRef, isReactive } from 'vue';
 
 export default {
     setup() {
@@ -17,6 +17,12 @@ export default {
             userName: "dream",
             age: 49
         })
+
+        console.log("user is reactive?", isReactive(user))
+        console.log("user is ref?", isRef(user))
+        console.log("user.userName is reactive?", isReactive(user.userName))
+        console.log("user.age is reactive?", isReactive(user.age))
+
         setTimeout(() => {
             user.userName = "一段時間更新 reactive"
             user.age += 1

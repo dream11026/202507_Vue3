@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, isRef, isReactive } from 'vue'
 
 export default {
     setup() {
@@ -18,6 +18,13 @@ export default {
         let currentAge = ref(49)
         console.log("userName type:", typeof userName, userName)
         console.log("userName2 type:", typeof userName2, userName2)
+
+        console.log("userName is ref?", isRef(userName))
+        console.log("userName2 is ref?", isRef(userName2))
+        console.log("userName2.value is ref?", isRef(userName2.value))
+        console.log("userName is reactive?", isReactive(userName))
+        console.log("userName2 is reactive?", isReactive(userName2))
+        console.log("userName2.value is reactive?", isReactive(userName2.value))
 
         setTimeout(() => {
             userName = "一段時間更新"
